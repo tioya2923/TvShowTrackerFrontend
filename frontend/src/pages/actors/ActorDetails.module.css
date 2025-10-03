@@ -1,0 +1,70 @@
+.actorDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+}
+
+.actorPhoto {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    margin-bottom: 24px;
+}
+
+.actorName {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 12px;
+}
+
+.actorBio {
+    font-size: 1.1rem;
+    color: #444;
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.actorShowsList {
+    width: 100%;
+    max-width: 700px;
+    margin-top: 32px;
+}
+
+.actorShowsTitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.actorShowItem {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    padding: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.actorShowImage {
+    width: 60px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 16px;
+}
+
+.actorShowName {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #222;
+}
+

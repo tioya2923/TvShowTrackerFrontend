@@ -1,0 +1,127 @@
+.registerBackground {
+  min-height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: url('https://culturaeviagem.files.wordpress.com/2013/05/a-genero-de-filme.jpg?w=816&h=9999') no-repeat center center fixed;
+  background-size: cover;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.registerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 15, 15, 0.6); /* preto transparente */
+  z-index: 0;
+}
+
+.logo {
+  position: absolute;
+  top: 24px;
+  left: 32px;
+  font-size: 1.7rem;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+}
+
+.formContainer {
+  position: relative;
+  z-index: 1;
+  max-width: 400px; /* aumente este valor para deixar mais largo */
+  width: 90vw;      /* ocupa 90% da largura da janela */
+  margin: 48px auto;
+  background: rgba(7, 7, 7, 0.85); /* preto transparente */
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+}
+
+h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;           /* reduzido para não encostar */
+  box-sizing: border-box; /* garante padding e largura correta */
+  padding: 12px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #222;
+  color: #fff;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  background: #333;
+  outline: 2px solid #e67e22; /* cor laranja */
+}
+
+label {
+  color: #fff;
+  font-size: 0.98rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+  accent-color: #e67e22; /* cor laranja */
+  width: 18px;
+  height: 18px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #e67e22 60%, #d35400 100%); /* gradiente laranja */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 8px;
+   
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(90deg, #d35400 60%, #e67e22 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+@media (max-width: 500px) {
+  .formContainer {
+    padding: 16px 6px;
+  }
+  h2 {
+    font-size: 1.1rem;
+  }
+}

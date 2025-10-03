@@ -1,0 +1,41 @@
+.card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.placeholder {
+  background-color: #eee;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.genres {
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  margin-bottom: 1rem;
+}
+
+.video {
+  margin-top: 1rem;
+}

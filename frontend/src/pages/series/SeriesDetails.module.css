@@ -1,0 +1,123 @@
+
+h1 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 8px;
+  color: #222;
+  line-height: 1.2;
+}
+
+.video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 480px;
+  border-radius: 8px;
+  background-color: #000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+p {
+  font-size: 1.1rem;
+  color: #444;
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+strong {
+  color: #f9f9fa;
+}
+
+ul {
+  list-style: disc inside;
+  margin: 8px 0 0 0;
+  padding: 0;
+  color: #f3f0f0;
+}
+
+li {
+  font-size: 1rem;
+  color: #f3f0f0;
+  margin-bottom: 4px;
+}
+
+.EpisodeList {
+  margin-top: 24px;
+}
+
+.favoriteBtnWrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 8px 0;
+}
+
+/* Responsividade aprimorada */
+@media (max-width: 1024px) {
+  .container {
+    padding: 24px 16px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .video {
+    max-height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 12px;
+    gap: 20px;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .video {
+    max-height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 16px 8px;
+    gap: 16px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+
+  .video {
+    max-height: 200px;
+  }
+
+  li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .video {
+    max-height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video {
+    max-height: 240px;
+  }
+}
+

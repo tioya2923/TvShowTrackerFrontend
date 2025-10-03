@@ -1,0 +1,131 @@
+.episode-list-container {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.episode-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 4px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  align-content: start;
+}
+
+.episode-card {
+  
+  border-radius: 2px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s;
+  overflow: hidden;
+  border: 1px solid #292929;
+}
+
+.episode-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+  z-index: 2;
+}
+
+.episode-video {
+  width: 100%;
+  height: 190px; /* aumentado */
+  border-radius: 0px;  
+  margin-bottom: 0.75rem;
+   margin-bottom: 0.5rem; /* reduzido */
+  object-fit: cover; /* garante que o vídeo/imagem ocupe todo o espaço */
+}
+
+.episode-title {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  color: #fff;
+  padding: 2px 0px;
+  letter-spacing: 0.5px;
+}
+.episode-description {
+  color: #fff;
+}
+
+.metadata-placeholder {
+  margin-bottom: 2rem;
+}
+
+.error {
+  color: #d32f2f;
+  margin: 12px 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.pagination {
+  grid-column: 1 / -1;
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: #fff;
+
+}
+
+.pagination button {
+  background-color: #292929;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+   
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #444;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .episode-list {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  .episode-title {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .episode-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 0 8px;
+  }
+
+  .episode-title {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .episode-video {
+    height: 100px; /* ajusta para telas menores */
+  }
+}
+
+@media (max-width: 480px) {
+  .episode-video {
+    height: 70px; /* ajusta para telas pequenas */
+  }
+}

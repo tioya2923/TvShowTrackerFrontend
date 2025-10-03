@@ -1,0 +1,12 @@
+.actorCard {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #d10a0a;
+}
+
+.actorPhoto {
+  width: 120px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
