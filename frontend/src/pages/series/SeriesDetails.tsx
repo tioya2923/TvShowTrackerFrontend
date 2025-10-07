@@ -7,7 +7,7 @@ import { EpisodeList } from '../../components/EpisodeList';
 import styles from './SeriesDetails.module.css';
 import { Actor } from '../../types/Actor';
 import { Genre } from '../../types/Genre';
-import { Episode } from '../../types/Episode';
+//import { Episode } from '../../types/Episode';
 
 export function SeriesDetails() {
   const { title } = useParams();

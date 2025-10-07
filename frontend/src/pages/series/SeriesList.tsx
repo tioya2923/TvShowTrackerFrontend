@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { api } from '../../api';
 import { TvShow } from '../../types/TvShow';
 import styles from './SeriesList.module.css';
@@ -12,19 +12,20 @@ export function SeriesList() {
   const [error, setError] = useState<string | null>(null);
 
   // Estima quantos itens cabem na tela com base na altura e largura
-  const estimatePageSize = () => {
-    const cardHeight = 300; // altura estimada por card
-    const cardWidth = 240;  // largura estimada por card
-    const availableHeight = window.innerHeight - 200; // margem para cabeçalho, etc.
+  const estimatePageSize = useCallback(() => {
+    const cardHeight = 300;
+    const cardWidth = 240;
+    const availableHeight = window.innerHeight - 200;
     const availableWidth = window.innerWidth - 40;
 
     const rows = Math.max(1, Math.floor(availableHeight / cardHeight));
     const columns = Math.max(1, Math.floor(availableWidth / cardWidth));
 
     return rows * columns;
-  };
+  }, []);
 
-  const fetchData = (currentPage: number) => {
+  // Carrega os dados da página atual
+  const fetchData = useCallback((currentPage: number) => {
     const pageSize = estimatePageSize();
     setLoading(true);
 
@@ -46,57 +47,54 @@ export function SeriesList() {
         setError('Não foi possível carregar as séries.');
       })
       .finally(() => setLoading(false));
-  };
+  }, [estimatePageSize]);
 
+  // Atualiza ao mudar de página
   useEffect(() => {
     fetchData(page);
-  }, [page]);
+  }, [page, fetchData]);
 
   // Atualiza ao redimensionar a janela
   useEffect(() => {
     const handleResize = () => {
-      setPage(1); // Reinicia na primeira página
+      setPage(1);
       fetchData(1);
     };
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [fetchData]);
 
   return (
+    <div className={styles.container}>
+      {loading && <p>A carregar...</p>}
+      {error && <p className={styles.error}>{error}</p>}
 
-      <div className={styles.container}>
-        {loading && <p>A carregar...</p>}
-        {error && <p className={styles.error}>{error}</p>}
+      {!loading && !error && tvshows.length === 0 && (
+        <p>Nenhuma série encontrada.</p>
+      )}
 
-        {!loading && !error && tvshows.length === 0 && (
-          <p>Nenhuma série encontrada.</p>
-        )}
+      {tvshows.map((show, index) => (
+        <div key={show.id ?? index} className={styles.card}>
+          <Link to={`/series/${encodeURIComponent(show.title)}`} className={styles.link}>
+            <img
+              src={show.imageUrl}
+              alt={`Imagem de ${show.title}`}
+              className={styles.image}
+            />
+            <h2 className={styles.title}>{show.title}</h2>
+          </Link>
+        </div>
+      ))}
 
-        {tvshows.map((show, index) => (
-          <div key={show.id ?? index} className={styles.card}>
-            <Link to={`/series/${encodeURIComponent(show.title)}`} className={styles.link}>
-
-              <img
-                src={show.imageUrl}
-                alt={`Imagem de ${show.title}`}
-                className={styles.image}
-              />
-              <h2 className={styles.title}>{show.title}</h2>
-            </Link>
-          </div>
-        ))}
-
-        {/* Só mostra a paginação se houver mais de uma página */}
-        {totalPages > 1 && (
-          <div className={styles.pagination}>
-            <button disabled={page === 1} onClick={() => setPage(p => p - 1)}>Anterior</button>
-            <span>Página {page} de {totalPages}</span>
-            <button disabled={page === totalPages} onClick={() => setPage(p => p + 1)}>Seguinte</button>
-          </div>
-        )}
-      </div>
-  
+      {totalPages > 1 && (
+        <div className={styles.pagination}>
+          <button disabled={page === 1} onClick={() => setPage(p => p - 1)}>Anterior</button>
+          <span>Página {page} de {totalPages}</span>
+          <button disabled={page === totalPages} onClick={() => setPage(p => p + 1)}>Seguinte</button>
+        </div>
+      )}
+    </div>
   );
 }
 

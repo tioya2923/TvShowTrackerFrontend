@@ -1,14 +1,20 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5111/api',
-});
-// Interceptor para incluir o token JWT em todas as requisições
-api.interceptors.request.use(config => {
-  const token = localStorage.getItem('authToken');
-  if (token) {
-    config.headers = config.headers || {};
-    config.headers.Authorization = `Bearer ${token}`;
+  baseURL: process.env.REACT_APP_API_BASE_URL ?? 'http://localhost:5111/api',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
   }
-  return config;
 });
+
+api.interceptors.request.use(
+  config => {
+    const token = localStorage.getItem('authToken');
+    if (token && config.headers) {
+      config.headers.set?.('Authorization', `Bearer ${token}`);
+    }
+    return config;
+  },
+  error => Promise.reject(error)
+);
